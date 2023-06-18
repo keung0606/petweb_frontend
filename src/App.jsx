@@ -9,6 +9,8 @@ import Login from './Login';
 import Register from './Register';
 import ViewCats from './viewCats';
 import Message from './Message';
+import UpdateMessage from './UpdateMessage';
+import SendMessage from './CreateMessage';
 
 function App() {
   const isAuthenticated = true;
@@ -23,6 +25,8 @@ function App() {
           <Route path="/update/:id" element={<UpdateCat />} />
           <Route path="/viewCats" element={<ViewCats />} />
           <Route path="/messages" element={<Message />} />
+          <Route path="/updateMessage/:id" element={<UpdateMessage />} />
+          <Route path="/sendMessage" element={<SendMessage />} />
         </Routes>
       </BrowserRouter>
     </div>

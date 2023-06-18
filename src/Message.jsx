@@ -31,6 +31,7 @@ function Message() {
             <th>Sender</th>
             <th>Recipient</th>
             <th>Message</th>
+            <th>Response</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -40,8 +41,9 @@ function Message() {
               <td>{message.sender}</td>
               <td>{message.recipient}</td>
               <td>{message.message}</td>
+              <td>{message.response}</td>
               <td>
-                <Link to={`/messages/update/${message._id}`}>Edit</Link> |{' '}
+                <Link to={`/updateMessage/${message._id}`}>Reply Message</Link> |{' '}
                 <button onClick={() => handleDelete(message._id)}>Delete</button>
               </td>
             </tr>

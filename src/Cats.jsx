@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 function Cats() {
   const [cats, setCats] = useState([]);
@@ -8,7 +8,7 @@ function Cats() {
   const [filteredCats, setFilteredCats] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3002')
+    axios.get(`http://localhost:3002`)
       .then(result => {
         setCats(result.data);
         setFilteredCats(result.data);

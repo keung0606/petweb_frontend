@@ -21,7 +21,7 @@ function UpdateCat() {
         setGender(cat.gender);
       })
       .catch(err => console.log(err));
-  }, [id]);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

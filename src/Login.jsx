@@ -25,10 +25,10 @@ function Login() {
         password: password,
       })
       .then((response) => {
-        const { success, userStatus } = response.data;
+        const { success, userStatus, id } = response.data;
         if (success) {
           if (userStatus === 1) {
-            navigate('/viewCats');
+            navigate('/viewCats', { state: { id } });
           } else if (userStatus === 0) {
             navigate('/');
           } else {

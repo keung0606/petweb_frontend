@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 function ViewCats() {
   const [cats, setCats] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredCats, setFilteredCats] = useState([]);
+  
 
   useEffect(() => {
     axios.get('http://localhost:3002')
@@ -59,7 +60,7 @@ function ViewCats() {
               <th>Breed</th>
               <th>Age</th>
               <th>Gender</th>
-              <th>Action</th>
+              <th>Message</th>
             </tr>
           </thead>
           <tbody>
@@ -72,7 +73,9 @@ function ViewCats() {
                 <td>{cat.breed}</td>
                 <td>{cat.age}</td>
                 <td>{cat.gender}</td>
-                <td><button>Add to Favourites</button></td>
+                <td>
+                  <Link to={`/message/${cat._id}`}>Message</Link> {/* New column */}
+                </td>
               </tr>
             ))}
           </tbody>

@@ -7,6 +7,7 @@ import CreateCat from './CreateCat';
 import UpdateCat from './UpdateCat';
 import Login from './Login';
 import Register from './Register';
+import ViewCats from './viewCats';
 
 function App() {
   const isAuthenticated = true;
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<Cats />} />
           <Route path="/create" element={<CreateCat />} />
           <Route path="/update/:id" element={<UpdateCat />} />
+          <Route path="/viewCats" element={<ViewCats />} />
         </Routes>
       </BrowserRouter>
     </div>

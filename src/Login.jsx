@@ -25,10 +25,15 @@ function Login() {
         password: password,
       })
       .then((response) => {
-        const { success, token } = response.data;
+        const { success, userStatus } = response.data;
         if (success) {
-
-          navigate('/');
+          if (userStatus === 1) {
+            navigate('/viewCats');
+          } else if (userStatus === 0) {
+            navigate('/');
+          } else {
+            setError('Invalid username or password');
+          }
         } else {
           setError('Invalid username or password');
         }

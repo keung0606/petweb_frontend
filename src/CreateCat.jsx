@@ -8,46 +8,73 @@ function CreateCat() {
   const [breed, setBreed] = useState('');
   const [age, setAge] = useState('');
   const [gender, setGender] = useState('');
+  const [image, setImage] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const cat = { name, breed, age, gender };
+    try {
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('gender', gender);
+      formData.append('age', age);
+      formData.append('breed', breed);
+      if (image) {
+        formData.append('image', image);
+      }
 
-    axios.post('http://localhost:3002/createCat', cat)
-      .then(res => {
-        console.log(res);
-        navigate('/');
-      })
-      .catch(err => console.log(err));
+      await axios.post('http://localhost:3002/createCat', formData);
+      navigate('/');
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
     <div>
-      <h2>Add Cat</h2>
+      <h2>Create Cat</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Name:</label>
-          <input type="text" required onChange={(e) => setName(e.target.value)} />
-        </div>
-        <div>
-          <label>Breed:</label>
-          <input type="text" required onChange={(e) => setBreed(e.target.value)} />
-        </div>
-        <div>
-          <label>Age:</label>
-          <input type="number" required onChange={(e) => setAge(e.target.value)} />
-        </div>
-        <div>
-          <label>Gender:</label>
-          <select required onChange={(e) => setGender(e.target.value)}>
-            <option value="">Select Gender</option>
+        <label>
+          Name:
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </label>
+        <br />
+        <label>
+          Gender:
+          <select value={gender} onChange={(e) => setGender(e.target.value)}>
+            <option value="">Select</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
           </select>
-        </div>
-        <div>
-          <button type="submit">Add Cat</button>
-        </div>
+        </label>
+        <br />
+        <label>
+          Age:
+          <input
+            type="number"
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
+          />
+        </label>
+        <br />
+        <label>
+          Breed:
+          <input
+            type="text"
+            value={breed}
+            onChange={(e) => setBreed(e.target.value)}
+          />
+        </label>
+        <br />
+        <label>
+          Image:
+          <input type="file" onChange={(e) => setImage(e.target.files[0])} />
+        </label>
+        <br />
+        <button type="submit">Create</button>
       </form>
     </div>
   );

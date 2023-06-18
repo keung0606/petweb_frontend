@@ -9,6 +9,7 @@ import Login from './Login';
 import Register from './Register';
 
 function App() {
+  const isAuthenticated = true;
   return (
     <div>
       <BrowserRouter>

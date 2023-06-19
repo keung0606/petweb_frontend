@@ -49,10 +49,10 @@ function Login() {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
+    <div class="container">
+      <h2 class="title">Login</h2>
+      <form onSubmit={handleSubmit} class="from_login">
+        <div class="from_login2">
           <label>Username:</label>
           <input type="text" value={username} onChange={handleUsernameChange} required />
         </div>
@@ -61,9 +61,9 @@ function Login() {
           <input type="password" value={password} onChange={handlePasswordChange} required />
         </div>
         {error && <div>{error}</div>}
-        <button type="submit">Login</button><br/>
-
-        <Link to="/register" className="btn_add">Sign up A Account</Link>
+        <button type="submit" class="btn-primary">Login</button>
+        <br />
+        <Link to="/register" class="btn_add">Sign up for an Account</Link>
       </form>
     </div>
   );

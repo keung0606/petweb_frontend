@@ -37,6 +37,7 @@ function ViewMessage() {
             </tr>
           ))}
         </tbody>
+        <Link to="/viewCats" className="btn_add">Last Page</Link>
       </table>
     </div>
   );

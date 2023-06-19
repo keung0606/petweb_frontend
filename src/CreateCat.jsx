@@ -31,7 +31,7 @@ function CreateCat() {
   };
 
   return (
-    <div>
+    <div className="container">
       <h2>Create Cat</h2>
       <form onSubmit={handleSubmit}>
         <label>
@@ -40,12 +40,17 @@ function CreateCat() {
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            required
           />
         </label>
         <br />
         <label>
           Gender:
-          <select value={gender} onChange={(e) => setGender(e.target.value)}>
+          <select
+            value={gender}
+            onChange={(e) => setGender(e.target.value)}
+            required
+          >
             <option value="">Select</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
@@ -58,6 +63,7 @@ function CreateCat() {
             type="number"
             value={age}
             onChange={(e) => setAge(e.target.value)}
+            required
           />
         </label>
         <br />
@@ -67,6 +73,7 @@ function CreateCat() {
             type="text"
             value={breed}
             onChange={(e) => setBreed(e.target.value)}
+            required
           />
         </label>
         <br />
@@ -75,7 +82,7 @@ function CreateCat() {
           <input type="file" onChange={(e) => setImage(e.target.files[0])} />
         </label>
         <br />
-        <button type="submit">Create</button>
+        <button type="submit" className="btn-primary">Create</button>
       </form>
     </div>
   );

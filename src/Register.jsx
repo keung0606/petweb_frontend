@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 function Register() {
   const [username, setUsername] = useState('');
@@ -41,7 +41,7 @@ function Register() {
   };
 
   return (
-    <div>
+    <div className="container">
       <h2>Register</h2>
       <form onSubmit={handleSubmit}>
         <div>
@@ -53,12 +53,12 @@ function Register() {
           <input type="password" value={password} onChange={handlePasswordChange} required />
         </div>
         <div>
-          <label>Sign in code(if you have):</label>
-          <input type="text" placeholder="Signup Code" value={signupCode}  onChange={(e) => setSignupCode(e.target.value)}
-          />
+          <label>Sign in code (if you have):</label>
+          <input type="text" placeholder="Signup Code" value={signupCode} onChange={(e) => setSignupCode(e.target.value)} />
         </div>
-        <button type="submit">Register</button>
+        <button type="submit" className="btn-primary">Register</button>
       </form>
+      <Link to="/login" className="btn_add">Login</Link>
     </div>
   );
 }

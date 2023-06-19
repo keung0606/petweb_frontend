@@ -43,7 +43,7 @@ function UpdateCat() {
   };
 
   return (
-    <div>
+    <div className="container">
       <h2>Update Cat</h2>
       <form onSubmit={handleSubmit}>
         <label>
@@ -52,12 +52,17 @@ function UpdateCat() {
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            required
           />
         </label>
         <br />
         <label>
           Gender:
-          <select value={gender} onChange={(e) => setGender(e.target.value)}>
+          <select
+            value={gender}
+            onChange={(e) => setGender(e.target.value)}
+            required
+          >
             <option value="">Select</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
@@ -70,6 +75,7 @@ function UpdateCat() {
             type="number"
             value={age}
             onChange={(e) => setAge(e.target.value)}
+            required
           />
         </label>
         <br />
@@ -79,6 +85,7 @@ function UpdateCat() {
             type="text"
             value={breed}
             onChange={(e) => setBreed(e.target.value)}
+            required
           />
         </label>
         <br />
@@ -87,7 +94,7 @@ function UpdateCat() {
           <input type="file" onChange={(e) => setImage(e.target.files[0])} />
         </label>
         <br />
-        <button type="submit">Update</button>
+        <button type="submit" className="btn-primary">Update</button>
       </form>
     </div>
   );

@@ -44,41 +44,44 @@ function ViewCats() {
   };
 
   return (
+    <div className="container">
+    <h1>View All Cats information</h1>
+    <Link to="/sendMessage" className="btn_add">Add to Favourites</Link><br/>
+     <Link to="/viewMessage" className="btn_add">Check Message</Link>
     <div>
-      <Link to="/viewMessage" className="btn_add">Add to Favourites</Link>
-      <div>
-        <input
-          type="text"
-          placeholder="Search cats by name"
-          value={searchTerm}
-          onChange={handleSearch}
-        />
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Cat Picture</th>
-              <th>Name</th>
-              <th>Breed</th>
-              <th>Age</th>
-              <th>Gender</th>
+      <input
+        type="text"
+        placeholder="Search cats by name"
+        value={searchTerm}
+        onChange={handleSearch}
+      />
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Cat Picture</th>
+            <th>Name</th>
+            <th>Breed</th>
+            <th>Age</th>
+            <th>Gender</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredCats.map(cat => (
+            <tr key={cat._id}>
+              <td>
+                {cat.image && <img className="cat-image" src={`http://localhost:3002/uploads/${cat.image}`} alt={cat.name} />}
+              </td>
+              <td>{cat.name}</td>
+              <td>{cat.breed}</td>
+              <td>{cat.age}</td>
+              <td>{cat.gender}</td>
             </tr>
-          </thead>
-          <tbody>
-            {filteredCats.map(cat => (
-              <tr key={cat._id}>
-                <td>
-                  {cat.image && <img src={`http://localhost:3002/uploads/${cat.image}`} alt={cat.name} style={{ width: '50px', height: '50px' }} />}
-                </td>
-                <td>{cat.name}</td>
-                <td>{cat.breed}</td>
-                <td>{cat.age}</td>
-                <td>{cat.gender}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+          ))}
+        </tbody>
+      </table>
+      <Link to="/login" className="btn_add">Logout</Link>
     </div>
+  </div>
   );
 }
 

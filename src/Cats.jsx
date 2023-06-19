@@ -51,7 +51,8 @@ function Cats() {
   
 
   return (
-    <div>
+    <div className="container">
+      <h1>Cat Management</h1>
       <div>
         <Link to="/create" className="btn_add">Add Cat</Link>
         <Link to="/messages" className="btn_add">Reply Message</Link>
@@ -76,20 +77,27 @@ function Cats() {
             {filteredCats.map(cat => (
               <tr key={cat._id}>
                 <td>
-                {cat.image && <img src={`http://localhost:3002/uploads/${cat.image}`} alt={cat.name} style={{ width: '50px', height: '50px' }} />}
+                  {cat.image && (
+                    <img
+                      className="cat-image"
+                      src={`http://localhost:3002/uploads/${cat.image}`}
+                      alt={cat.name}
+                    />
+                  )}
                 </td>
                 <td>{cat.name}</td>
                 <td>{cat.breed}</td>
                 <td>{cat.age}</td>
                 <td>{cat.gender}</td>
                 <td>
-                  <Link to={`/update/${cat._id}`} className="btn_add">Edit</Link> |{' '}
-                  <button onClick={() => handleDelete(cat._id)} >Delete</button>
+                  <Link to={`/update/${cat._id}`} className="btn_add">Edit</Link> |
+                  <button onClick={() => handleDelete(cat._id)}>Delete</button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+        <Link to="/login" className="btn_add">Logout</Link>
       </div>
     </div>
   );

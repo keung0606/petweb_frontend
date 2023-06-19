@@ -43,13 +43,14 @@ function Message() {
               <td>{message.recipient}</td>
               <td>{message.response}</td>
               <td>
-                <Link to={`/updateMessage/${message._id}`}>Reply Message</Link> |{' '}
-                <button onClick={() => handleDelete(message._id)}>Delete</button>
+                <Link to={`/updateMessage/${message._id}`} className="btn_add">Reply Message</Link> |{' '}
+                <button onClick={() => handleDelete(message._id)} >Delete</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      <Link to="/" className="btn_add">Last Page</Link>
     </div>
   );
 }

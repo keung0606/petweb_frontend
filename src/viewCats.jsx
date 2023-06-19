@@ -45,6 +45,7 @@ function ViewCats() {
 
   return (
     <div>
+      <Link to="/viewMessage" className="btn_add">Add to Favourites</Link>
       <div>
         <input
           type="text"
@@ -60,7 +61,6 @@ function ViewCats() {
               <th>Breed</th>
               <th>Age</th>
               <th>Gender</th>
-              <th>Message</th>
             </tr>
           </thead>
           <tbody>
@@ -73,9 +73,6 @@ function ViewCats() {
                 <td>{cat.breed}</td>
                 <td>{cat.age}</td>
                 <td>{cat.gender}</td>
-                <td>
-                  <Link to={`/message/${cat._id}`}>Message</Link> {/* New column */}
-                </td>
               </tr>
             ))}
           </tbody>

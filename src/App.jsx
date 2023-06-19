@@ -11,6 +11,7 @@ import ViewCats from './viewCats';
 import Message from './Message';
 import UpdateMessage from './UpdateMessage';
 import SendMessage from './CreateMessage';
+import ViewMessage from './viewMessage';
 
 function App() {
   const isAuthenticated = true;
@@ -27,6 +28,7 @@ function App() {
           <Route path="/messages" element={<Message />} />
           <Route path="/updateMessage/:id" element={<UpdateMessage />} />
           <Route path="/sendMessage" element={<SendMessage />} />
+          <Route path="/viewMessage" element={<ViewMessage />} />
         </Routes>
       </BrowserRouter>
     </div>

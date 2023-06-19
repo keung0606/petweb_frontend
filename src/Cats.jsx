@@ -54,6 +54,7 @@ function Cats() {
     <div>
       <div>
         <Link to="/create" className="btn_add">Add Cat</Link>
+        <Link to="/messages" className="btn_add">Reply Message</Link>
         <input
           type="text"
           placeholder="Search cats by name"
@@ -82,8 +83,8 @@ function Cats() {
                 <td>{cat.age}</td>
                 <td>{cat.gender}</td>
                 <td>
-                  <Link to={`/update/${cat._id}`}>Edit</Link> |{' '}
-                  <button onClick={() => handleDelete(cat._id)}>Delete</button>
+                  <Link to={`/update/${cat._id}`} className="btn_add">Edit</Link> |{' '}
+                  <button onClick={() => handleDelete(cat._id)} >Delete</button>
                 </td>
               </tr>
             ))}

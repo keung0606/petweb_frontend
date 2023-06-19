@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 
-function Message() {
+function ViewMessage() {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
@@ -13,26 +13,18 @@ function Message() {
       .catch(err => console.log(err));
   }, []);
 
-  const handleDelete = (id) => {
-    axios.delete(`http://localhost:3002/deleteMessage/${id}`)
-      .then(res => {
-        console.log(res);
-        window.location.reload();
-      })
-      .catch(err => console.log(err));
-  };
 
   return (
     <div>
-      <h2>Messages</h2>
+      <h2>Send us a message you're interested any cats</h2>
+      <Link to="/sendMessage" className="btn_add">Send Message</Link>
       <table className="table">
         <thead>
           <tr>
             <th>Sender</th>
-            <th>Message(Enter Personal info, Address, Phone)</th>
+            <th>Message</th>
             <th>Recipient</th>
             <th>Response</th>
-            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -42,10 +34,6 @@ function Message() {
               <td>{message.message}</td>
               <td>{message.recipient}</td>
               <td>{message.response}</td>
-              <td>
-                <Link to={`/updateMessage/${message._id}`}>Reply Message</Link> |{' '}
-                <button onClick={() => handleDelete(message._id)}>Delete</button>
-              </td>
             </tr>
           ))}
         </tbody>
@@ -54,6 +42,4 @@ function Message() {
   );
 }
 
-export default Message;
-
-
+export default ViewMessage;

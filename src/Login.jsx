@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Login() {
   const navigate = useNavigate();
@@ -56,7 +56,8 @@ function Login() {
           <input type="password" value={password} onChange={handlePasswordChange} required />
         </div>
         {error && <div>{error}</div>}
-        <button type="submit">Login</button>
+        <button type="submit">Login</button><br/>
+        <Link to="/register" className="btn_add">Sign up A Account</Link>
       </form>
     </div>
   );

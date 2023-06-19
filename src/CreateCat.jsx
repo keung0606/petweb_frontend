@@ -23,6 +23,7 @@ function CreateCat() {
       }
 
       await axios.post('http://localhost:3002/createCat', formData);
+      
       navigate('/');
     } catch (error) {
       console.error(error);

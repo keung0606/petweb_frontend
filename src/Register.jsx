@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [signupCode, setSignupCode] = useState('');
+  const navigate = useNavigate(); // Access the navigate function
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -17,6 +20,7 @@ function Register() {
     const user = {
       username,
       password,
+      signupCode,
     };
     // Make an HTTP POST request to the server for registration
     fetch('http://localhost:3002/register', {
@@ -28,7 +32,8 @@ function Register() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data); // You can handle the response as needed
+        console.log(data);
+        navigate('/login');
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -47,6 +52,11 @@ function Register() {
           <label>Password:</label>
           <input type="password" value={password} onChange={handlePasswordChange} required />
         </div>
+        <div>
+          <label>Sign in code(if you have):</label>
+          <input type="text" placeholder="Signup Code" value={signupCode}  onChange={(e) => setSignupCode(e.target.value)}
+          />
+        </div>
         <button type="submit">Register</button>
       </form>
     </div>
@@ -54,3 +64,4 @@ function Register() {
 }
 
 export default Register;
+

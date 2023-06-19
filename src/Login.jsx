@@ -2,11 +2,16 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
+
 function Login() {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+
+  const handleGoogleLogin = () => {
+    window.location.href = 'http://localhost:3002/auth/google';
+  };
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -57,6 +62,7 @@ function Login() {
         </div>
         {error && <div>{error}</div>}
         <button type="submit">Login</button><br/>
+
         <Link to="/register" className="btn_add">Sign up A Account</Link>
       </form>
     </div>
